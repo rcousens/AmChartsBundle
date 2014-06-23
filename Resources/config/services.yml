@@ -1,8 +1,8 @@
 parameters:
-  ob_highcharts.twig_extension.class: Ob\HighchartsBundle\Twig\HighchartsExtension
+  redeye_amcharts.twig_extension.class: RedEye\AmChartsBundle\Twig\AmChartsExtension
 
 services:
-  ob_highcharts.twig.highcharts_extension:
-    class: %ob_highcharts.twig_extension.class%
+  redeye_amcharts.twig.amcharts_extension:
+    class: %redeye_amcharts.twig_extension.class%
     tags:
         - { name: twig.extension }

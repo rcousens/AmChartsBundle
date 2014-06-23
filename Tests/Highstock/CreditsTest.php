@@ -1,6 +1,6 @@
 <?php
 
-namespace Ob\HighchartsBundle\Tests\Highstock;
+namespace RedEye\AmChartsBundle\Tests\Highstock;
 
 use Ob\HighchartsBundle\Highcharts\Highstock;
 
