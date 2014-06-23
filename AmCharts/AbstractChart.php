@@ -7,39 +7,20 @@ use Zend\Json\Json;
 abstract class AbstractChart
 {
     // Default options
-    public $chart;
-    public $colors;
-    public $credits;
-    public $global;
-    public $labels;
-    public $lang;
-    public $legend;
-    public $loading;
-    public $plotOptions;
-    public $rangeSelector;
-    public $point;
-    public $series;
-    public $subtitle;
-    public $symbols;
-    public $title;
-    public $tooltip;
-    public $xAxis;
-    public $yAxis;
-    public $exporting;
-    public $navigation;
-    public $pane;
+    public $theme;
+    public $valueField;
+    public $titleField;
+    public $dataProvider;
 
     public function __construct()
     {
-        $chartOptions = array('chart', 'credits', 'global', 'labels', 'lang', 'legend', 'loading', 'plotOptions',
-            'rangeSelector', 'point', 'subtitle', 'title', 'tooltip', 'xAxis', 'yAxis', 'pane', 'exporting',
-            'navigation');
+        $chartOptions = array('theme', 'valueField', 'titleField');
 
         foreach ($chartOptions as $option) {
             $this->initChartOption($option);
         }
 
-        $arrayOptions = array('colors', 'series', 'symbols');
+        $arrayOptions = array('dataProvider');
 
         foreach ($arrayOptions as $option) {
             $this->initArrayOption($option);

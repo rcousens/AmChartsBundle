@@ -10,13 +10,16 @@ class ChartOption
 {
     private $option_name;
 
+    private $option_value;
+
     /**
      * @param string $name
      */
     public function __construct($name)
     {
         $this->option_name = $name;
-        $this->{$name} = new \stdClass();
+
+        $this->option_value = null;
     }
 
     /**
@@ -27,9 +30,7 @@ class ChartOption
      */
     public function __call($name, $value)
     {
-        $option_name = $this->option_name;
-        $this->{$option_name}->{$name} = $value[0];
-
+        $this->option_value = $value[0];
         return $this;
     }
 
@@ -40,9 +41,6 @@ class ChartOption
      */
     public function __get($name)
     {
-        $option_name = $this->option_name;
-        $value = $this->{$option_name}->{$name};
-
-        return $value;
+        return $this->option_value;
     }
 }
