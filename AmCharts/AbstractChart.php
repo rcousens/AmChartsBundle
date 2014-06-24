@@ -37,7 +37,7 @@ abstract class AbstractChart
      */
     public function __call($name, $value)
     {
-        if (property_exists($this, $name) && ! $this->$name instanceof ComplexOption) {
+        if (property_exists($this, $name) && ! $this->$name instanceof ComplexOption && ! is_array($this->$name)) {
             $this->$name = $value[0];
         } else {
             $this->$name = $value;
@@ -90,7 +90,7 @@ abstract class AbstractChart
     protected function renderScalarWithCallback($scalarOption, $name)
     {
         $result = "";
-        if (!empty($chartOption)) {
+        if (!empty($scalarOption)) {
             $result .= $name . ": " . Json::encode($scalarOption, false, array('enableJsonExprFinder' => true)) . ",\n";
         }
 
