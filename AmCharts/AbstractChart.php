@@ -7,20 +7,26 @@ use Zend\Json\Json;
 abstract class AbstractChart
 {
     // Default options
+    public $type;
     public $theme;
-    public $valueField;
-    public $titleField;
+    public $config;
     public $dataProvider;
 
     public function __construct()
     {
-        $chartOptions = array('theme', 'valueField', 'titleField');
+        $simpleOptions = array('type', 'theme');
 
-        foreach ($chartOptions as $option) {
-            $this->initChartOption($option);
-        }
+        $complexOptions = array('config');
 
         $arrayOptions = array('dataProvider');
+
+        foreach ($simpleOptions as $option) {
+            $this->initSimpleOption($option);
+        }
+
+        foreach ($complexOptions as $option) {
+            $this->initComplexOption($option);
+        }
 
         foreach ($arrayOptions as $option) {
             $this->initArrayOption($option);
@@ -45,9 +51,14 @@ abstract class AbstractChart
     /**
      * @param string $name
      */
-    protected function initChartOption($name)
+    protected function initSimpleOption($name)
     {
-        $this->{$name} = new ChartOption($name);
+        $this->{$name} = new SimpleOption();
+    }
+
+    protected function initComplexOption($name)
+    {
+        $this->{$name} = new ComplexOption($name);
     }
 
     /**
@@ -74,6 +85,20 @@ abstract class AbstractChart
 
         if (gettype($chartOption) === 'object') {
             $result .= $this->renderObjectWithCallback($chartOption, $name);
+        }
+
+        if (in_array(gettype($chartOption), array('string', 'integer'))) {
+            $result .= $this->renderScalarWithCallback($chartOption, $name);
+        }
+
+        return $result;
+    }
+
+    protected function renderScalarWithCallback($chartOption, $name)
+    {
+        $result = "";
+        if (!empty($chartOption)) {
+            $result .= $name . ": " . Json::encode($chartOption, false, array('enableJsonExprFinder' => true)) . ",\n";
         }
 
         return $result;

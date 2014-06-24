@@ -6,27 +6,40 @@ namespace RedEye\AmChartsBundle\AmCharts;
  * This class is part of the Ob/HighchartsBundle
  * See Highcharts documentation at http://www.highcharts.com/ref/
  */
-class Highchart extends AbstractChart implements ChartInterface
+class AmPieChart extends AbstractChart implements ChartInterface
 {
+    public $valueField;
+    public $titleField;
+    public $type = 'pie';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $simpleOptions = array('valueField', 'titleField');
+
+        foreach ($simpleOptions as $option)
+        {
+            $this->initSimpleOption($option);
+        }
+    }
+
     /**
      * @param string $engine
      *
      * @return string
      */
-    public function render($engine = 'jquery')
+    public function render()
     {
         $chartJS = "";
 
         // jQuery or MooTools
-        if ($engine == 'mootools') {
-            $chartJS = 'window.addEvent(\'domready\', function () {';
-        } elseif ($engine == 'jquery') {
-            $chartJS = "$(function () {";
-        }
-        $chartJS .= "\n    var " . (isset($this->chart->renderTo) ? $this->chart->renderTo : 'chart') . " = new Highcharts.Chart({\n";
+        $chartJS = "$(function () {";
+
+        $chartJS .= "\n    var piechart = new AmCharts.makeChart(\"" . (isset($this->config->container) ? $this->config->container : 'chart') . "\", {\n";
 
         // Chart Option
-        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, "chart");
+        $chartJS .= $this->renderWithJavascriptCallback($this->type, "type");
 
         // Colors
         if (!empty($this->colors)) {

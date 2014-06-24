@@ -2,7 +2,7 @@
 
 namespace RedEye\AmChartsBundle\AmCharts;
 
-class ChartOption
+class ComplexOption
 {
     private $option_name;
 
@@ -17,7 +17,7 @@ class ChartOption
 
     /**
      * @param string $name
-     * @param array  $value
+     * @param array $value
      *
      * @return $this
      */
@@ -40,5 +40,17 @@ class ChartOption
         $value = $this->{$option_name}->{$name};
 
         return $value;
+    }
+
+    /**
+     *
+     */
+    public function __isset($name)
+    {
+        $option_name = $this->option_name;
+        if (isset($this->{$option_name}->{$name})) {
+            return true;
+        }
+        return false;
     }
 }
