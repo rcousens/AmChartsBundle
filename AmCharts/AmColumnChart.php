@@ -1,12 +1,15 @@
 <?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ross
+ * Date: 24/06/2014
+ * Time: 1:18 PM
+ */
 
 namespace RedEye\AmChartsBundle\AmCharts;
 
-/**
- * This class is part of the Ob/HighchartsBundle
- * See Highcharts documentation at http://www.highcharts.com/ref/
- */
-class AmPieChart extends AbstractChart implements ChartInterface
+
+class AmColumnChart  extends AbstractChart implements ChartInterface
 {
     public $valueField;
     public $titleField;
@@ -15,9 +18,14 @@ class AmPieChart extends AbstractChart implements ChartInterface
     {
         parent::__construct();
 
-        $this->type('pie');
-        $this->valueField('value');
-        $this->titleField('title');
+        $this->type('serial');
+        $this->categoryField('category');
+
+        $arrayOptions = array('graphs');
+
+        foreach ($arrayOptions as $option) {
+            $this->initArrayOption($option);
+        }
     }
 
     /**
@@ -33,8 +41,8 @@ class AmPieChart extends AbstractChart implements ChartInterface
         // Chart Option
         $chartJS .= $this->renderWithJavascriptCallback($this->type, "type");
         $chartJS .= $this->renderWithJavascriptCallback($this->theme, "theme");
-        $chartJS .= $this->renderWithJavascriptCallback($this->valueField, "valueField");
-        $chartJS .= $this->renderWithJavascriptCallback($this->titleField, "titleField");
+        $chartJS .= $this->renderWithJavascriptCallback($this->categoryField, "categoryField");
+        $chartJS .= $this->renderWithJavascriptCallback($this->graphs, "graphs");
         $chartJS .= $this->renderWithJavascriptCallback($this->dataProvider, "dataProvider");
         // trim last trailing comma and close parenthesis
 
