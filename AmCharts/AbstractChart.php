@@ -8,21 +8,15 @@ abstract class AbstractChart
 {
     // Default options
     public $type;
-    public $theme;
+    public $theme = 'none';
     public $config;
     public $dataProvider;
 
     public function __construct()
     {
-        $simpleOptions = array('type', 'theme');
-
         $complexOptions = array('config');
 
         $arrayOptions = array('dataProvider');
-
-        foreach ($simpleOptions as $option) {
-            $this->initSimpleOption($option);
-        }
 
         foreach ($complexOptions as $option) {
             $this->initComplexOption($option);
@@ -46,14 +40,6 @@ abstract class AbstractChart
         $this->$name = $value;
 
         return $this;
-    }
-
-    /**
-     * @param string $name
-     */
-    protected function initSimpleOption($name)
-    {
-        $this->{$name} = new SimpleOption();
     }
 
     protected function initComplexOption($name)

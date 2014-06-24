@@ -15,13 +15,6 @@ class AmPieChart extends AbstractChart implements ChartInterface
     public function __construct()
     {
         parent::__construct();
-
-        $simpleOptions = array('valueField', 'titleField');
-
-        foreach ($simpleOptions as $option)
-        {
-            $this->initSimpleOption($option);
-        }
     }
 
     /**
