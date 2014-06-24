@@ -137,4 +137,15 @@ abstract class AbstractChart
 
         return $result;
     }
+
+
+    protected function renderStartIIFE()
+    {
+        return "$(function () {\n";
+    }
+
+    protected function renderEndIIFE()
+    {
+        return "});\n";
+    }
 }
