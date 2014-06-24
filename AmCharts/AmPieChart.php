@@ -16,6 +16,8 @@ class AmPieChart extends AbstractChart implements ChartInterface
         parent::__construct();
 
         $this->type('pie');
+        $this->valueField('value');
+        $this->titleField('title');
     }
 
     /**
@@ -41,7 +43,7 @@ class AmPieChart extends AbstractChart implements ChartInterface
         $chartJS = rtrim($chartJS, ",\n") . "\n    });\n";
         //$chartJS = $this->renderEndChart();
 
-        $chartJS = $this->renderEndIIFE();
+        $chartJS .= $this->renderEndIIFE();
 
         return trim($chartJS);
     }
