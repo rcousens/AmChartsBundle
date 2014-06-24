@@ -10,11 +10,12 @@ class AmPieChart extends AbstractChart implements ChartInterface
 {
     public $valueField;
     public $titleField;
-    public $type = 'pie';
 
     public function __construct()
     {
         parent::__construct();
+
+        $this->type('pie');
     }
 
     /**
@@ -24,7 +25,7 @@ class AmPieChart extends AbstractChart implements ChartInterface
      */
     public function render()
     {
-        $chartJS = "";
+
 
         $chartJS = $this->renderStartIIFE();
 

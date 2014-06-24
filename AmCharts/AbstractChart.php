@@ -37,11 +37,18 @@ abstract class AbstractChart
      */
     public function __call($name, $value)
     {
-        $this->$name = $value;
+        if (property_exists($this, $name) && ! $this->$name instanceof ComplexOption) {
+            $this->$name = $value[0];
+        } else {
+            $this->$name = $value;
+        }
 
         return $this;
     }
 
+    /**
+     * @param string $name
+     */
     protected function initComplexOption($name)
     {
         $this->{$name} = new ComplexOption($name);
@@ -80,45 +87,33 @@ abstract class AbstractChart
         return $result;
     }
 
-    protected function renderScalarWithCallback($chartOption, $name)
+    protected function renderScalarWithCallback($scalarOption, $name)
     {
         $result = "";
         if (!empty($chartOption)) {
-            $result .= $name . ": " . Json::encode($chartOption, false, array('enableJsonExprFinder' => true)) . ",\n";
+            $result .= $name . ": " . Json::encode($scalarOption, false, array('enableJsonExprFinder' => true)) . ",\n";
         }
 
         return $result;
     }
 
-    /**
-     * @param array  $chartOption
-     * @param string $name
-     *
-     * @return string
-     */
-    protected function renderArrayWithCallback($chartOption, $name)
+    protected function renderArrayWithCallback($complexOption, $name)
     {
         $result = "";
 
-        if (!empty($chartOption)) {
-            $result .= $name . ": " . Json::encode($chartOption[0], false, array('enableJsonExprFinder' => true)) . ", \n";
+        if (!empty($complexOption)) {
+            $result .= $name . ": " . Json::encode($complexOption[0], false, array('enableJsonExprFinder' => true)) . ", \n";
         }
 
         return $result;
     }
 
-    /**
-     * @param ChartOption $chartOption
-     * @param string      $name
-     *
-     * @return string
-     */
-    protected function renderObjectWithCallback($chartOption, $name)
+    protected function renderObjectWithCallback($complexOption, $name)
     {
         $result = "";
 
-        if (get_object_vars($chartOption)) {
-            $result .= $name . ": " . Json::encode($chartOption, false, array('enableJsonExprFinder' => true)) . ",\n";
+        if (get_object_vars($complexOption)) {
+            $result .= $name . ": " . Json::encode($complexOption, false, array('enableJsonExprFinder' => true)) . ",\n";
         }
 
         return $result;
