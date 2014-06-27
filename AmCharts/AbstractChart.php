@@ -113,7 +113,7 @@ abstract class AbstractChart
         $result = "";
 
         if (get_object_vars($complexOption)) {
-            $result .= $name . ": " . Json::encode($complexOption, false, array('enableJsonExprFinder' => true)) . ",\n";
+            $result .= $name . ": " . Json::encode($complexOption->{$name}, false, array('enableJsonExprFinder' => true)) . ",\n";
         }
 
         return $result;
