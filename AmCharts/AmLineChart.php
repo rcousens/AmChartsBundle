@@ -49,9 +49,10 @@ class AmLineChart extends AbstractChart implements ChartInterface
         // Chart Option
         $chartJS .= $this->renderWithJavascriptCallback($this->type, "type");
         $chartJS .= $this->renderWithJavascriptCallback($this->theme, "theme");
-        $chartJS .= $this->renderWithJavascriptCallback($this->categoryField, "valueField");
-        $chartJS .= $this->renderWithJavascriptCallback($this->categoryAxis, "titleField");
-        $chartJS .= $this->renderWithJavascriptCallback($this->graphs, "dataProvider");
+        $chartJS .= $this->renderWithJavascriptCallback($this->categoryField, "categoryField");
+        $chartJS .= $this->renderWithJavascriptCallback($this->categoryAxis, "categoryAxis");
+        $chartJS .= $this->renderWithJavascriptCallback($this->graphs, "graphs");
+        $chartJS .= $this->renderWithJavascriptCallback($this->dataProvider, "dataProvider");
         // trim last trailing comma and close parenthesis
 
         $chartJS = rtrim($chartJS, ",\n") . "\n    });\n";
