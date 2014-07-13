@@ -97,12 +97,12 @@ abstract class AbstractChart
         return $result;
     }
 
-    protected function renderArrayWithCallback($complexOption, $name)
+    protected function renderArrayWithCallback($arrayOption, $name)
     {
         $result = "";
 
         if (!empty($complexOption)) {
-            $result .= $name . ": " . Json::encode($complexOption[0], false, array('enableJsonExprFinder' => true)) . ",\n";
+            $result .= $name . ": " . Json::encode($arrayOption[0], false, array('enableJsonExprFinder' => true)) . ",\n";
         }
 
         return $result;

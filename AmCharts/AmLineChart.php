@@ -11,6 +11,7 @@ class AmLineChart extends AbstractChart implements ChartInterface
     public $categoryField;
     public $categoryAxis;
     public $graphs;
+    public $chartScrollbar;
 
     public function __construct()
     {
@@ -28,7 +29,7 @@ class AmLineChart extends AbstractChart implements ChartInterface
 
         $this->graphs(array('valueField' => 'value'));
 
-        $complexOptions = array('categoryAxis');
+        $complexOptions = array('categoryAxis', 'chartScrollbar');
 
         foreach ($complexOptions as $option) {
             $this->initComplexOption($option);
@@ -51,6 +52,7 @@ class AmLineChart extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderWithJavascriptCallback($this->theme, "theme");
         $chartJS .= $this->renderWithJavascriptCallback($this->categoryField, "categoryField");
         $chartJS .= $this->renderWithJavascriptCallback($this->categoryAxis, "categoryAxis");
+        $chartJS .= $this->renderWithJavascriptCallback($this->chartScrollbar, "chartScrollbar");
         $chartJS .= $this->renderWithJavascriptCallback($this->graphs, "graphs");
         $chartJS .= $this->renderWithJavascriptCallback($this->dataProvider, "dataProvider");
         // trim last trailing comma and close parenthesis
