@@ -11,12 +11,13 @@ abstract class AbstractChart
     public $theme = 'none';
     public $config;
     public $dataProvider;
+    public $valueAxes;
 
     public function __construct()
     {
         $complexOptions = array('config');
 
-        $arrayOptions = array('dataProvider');
+        $arrayOptions = array('dataProvider', 'valueAxes');
 
         foreach ($complexOptions as $option) {
             $this->initComplexOption($option);
