@@ -12,7 +12,7 @@ abstract class AbstractChart
     public $config;
     public $dataProvider;
     public $valueAxes;
-    public $pathToImages = '/bundles/redeyeamcharts/js/amcharts/images';
+    public $pathToImages = '/bundles/redeyeamcharts/js/amcharts/images/';
 
     public function __construct()
     {
