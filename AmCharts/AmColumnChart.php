@@ -50,6 +50,7 @@ class AmColumnChart  extends AbstractChart implements ChartInterface
         // Chart Option
         $chartJS .= $this->renderWithJavascriptCallback($this->type, "type");
         $chartJS .= $this->renderWithJavascriptCallback($this->theme, "theme");
+        $chartJS .= $this->renderWithJavascriptCallback($this->pathToImages, "pathToImages");
         $chartJS .= $this->renderWithJavascriptCallback($this->categoryField, "categoryField");
         $chartJS .= $this->renderWithJavascriptCallback($this->chartScrollbar, "chartScrollbar");
         $chartJS .= $this->renderWithJavascriptCallback($this->graphs, "graphs");
