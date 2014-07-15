@@ -82,7 +82,7 @@ abstract class AbstractChart
             $result .= $this->renderObjectWithCallback($chartOption, $name);
         }
 
-        if (in_array(gettype($chartOption), array('string', 'integer'))) {
+        if (in_array(gettype($chartOption), array('string', 'integer', 'boolean'))) {
             $result .= $this->renderScalarWithCallback($chartOption, $name);
         }
 
