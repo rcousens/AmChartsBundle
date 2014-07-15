@@ -65,7 +65,7 @@ abstract class AbstractChart
     }
 
     /**
-     * @param ChartOption|array $chartOption
+     * @param mixed $chartOption
      * @param string            $name
      *
      * @return string
