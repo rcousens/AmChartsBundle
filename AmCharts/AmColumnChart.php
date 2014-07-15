@@ -17,6 +17,8 @@ class AmColumnChart  extends AbstractChart implements ChartInterface
     public $chartScrollbar;
     public $graphs;
     public $rotate = false;
+    public $startEffect = "bounce";
+    public $startDuration = 1;
 
     public function __construct()
     {
@@ -52,6 +54,8 @@ class AmColumnChart  extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderWithJavascriptCallback($this->type, "type");
         $chartJS .= $this->renderWithJavascriptCallback($this->theme, "theme");
         $chartJS .= $this->renderWithJavascriptCallback($this->pathToImages, "pathToImages");
+        $chartJS .= $this->renderWithJavascriptCallback($this->startEffect, "startEffect");
+        $chartJS .= $this->renderWithJavascriptCallback($this->startDuration, "startDuration");
         $chartJS .= $this->renderWithJavascriptCallback($this->categoryField, "categoryField");
         $chartJS .= $this->renderWithJavascriptCallback($this->chartScrollbar, "chartScrollbar");
         $chartJS .= $this->renderWithJavascriptCallback($this->rotate, "rotate");
