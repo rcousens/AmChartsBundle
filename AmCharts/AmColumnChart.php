@@ -17,7 +17,7 @@ class AmColumnChart  extends AbstractChart implements ChartInterface
     public $chartScrollbar;
     public $graphs;
     public $rotate = false;
-    public $startEffect = "bounce";
+    public $startEffect = ">";
     public $startDuration = 1;
 
     public function __construct()

@@ -12,7 +12,7 @@ class AmLineChart extends AbstractChart implements ChartInterface
     public $categoryAxis;
     public $graphs;
     public $chartScrollbar;
-    public $startEffect = "bounce";
+    public $startEffect = ">";
     public $startDuration = 1;
 
     public function __construct()
