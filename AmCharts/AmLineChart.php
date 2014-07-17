@@ -12,6 +12,7 @@ class AmLineChart extends AbstractChart implements ChartInterface
     public $categoryAxis;
     public $graphs;
     public $chartScrollbar;
+    public $dataDateFormat = "YYYY-MM-DD";
     public $startEffect = ">";
     public $startDuration = 1;
 
@@ -54,6 +55,7 @@ class AmLineChart extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderWithJavascriptCallback($this->theme, "theme");
         $chartJS .= $this->renderWithJavascriptCallback($this->pathToImages, "pathToImages");
         $chartJS .= $this->renderWithJavascriptCallback($this->startEffect, "startEffect");
+        $chartJS .= $this->renderWithJavascriptCallback($this->dataDateFormat, "dataDateFormat");
         $chartJS .= $this->renderWithJavascriptCallback($this->startDuration, "startDuration");
         $chartJS .= $this->renderWithJavascriptCallback($this->categoryField, "categoryField");
         $chartJS .= $this->renderWithJavascriptCallback($this->categoryAxis, "categoryAxis");
