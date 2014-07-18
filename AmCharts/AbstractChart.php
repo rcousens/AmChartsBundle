@@ -2,125 +2,25 @@
 
 namespace RedEye\AmChartsBundle\AmCharts;
 
-use Zend\Json\Json;
+use RedEye\AmChartsBundle\AmCharts\Option\OptionCollection;
 
-abstract class AbstractChart
+abstract class AbstractChart implements ChartInterface
 {
-    // Default options
-    public $type;
-    public $theme = 'none';
+    public $options;
     public $config;
-    public $dataProvider;
-    public $valueAxes;
-    public $pathToImages = '/bundles/redeyeamcharts/js/amcharts/images/';
 
     public function __construct()
     {
-        $complexOptions = array('config');
-
-        $arrayOptions = array('dataProvider', 'valueAxes');
-
-        foreach ($complexOptions as $option) {
-            $this->initComplexOption($option);
-        }
-
-        foreach ($arrayOptions as $option) {
-            $this->initArrayOption($option);
-        }
+        $this->options = new OptionCollection();
+        $this->config = (object) array('container' => 'chart', 'height' => 400, 'width' => 400);
+        $this->setOptions();
     }
 
-    abstract public function render();
-
-    /**
-     * @param string $name
-     * @param mixed  $value
-     *
-     * @return $this
-     */
-    public function __call($name, $value)
+    public function setOptions()
     {
-        if (property_exists($this, $name) && ! $this->$name instanceof ComplexOption && ! is_array($this->$name)) {
-            $this->$name = $value[0];
-        } else {
-            $this->$name = $value;
-        }
-
-        return $this;
+        $this->options->addScalarOption('theme', 'none');
+        $this->options->addScalarOption('pathToImages', '/bundles/redeyeamcharts/js/amcharts/images/');
     }
-
-    /**
-     * @param string $name
-     */
-    protected function initComplexOption($name)
-    {
-        $this->{$name} = new ComplexOption($name);
-    }
-
-    /**
-     * @param string $name
-     */
-    protected function initArrayOption($name)
-    {
-        $this->{$name} = array();
-    }
-
-    /**
-     * @param mixed $chartOption
-     * @param string            $name
-     *
-     * @return string
-     */
-    protected function renderWithJavascriptCallback($chartOption, $name)
-    {
-        $result = "";
-
-        if (gettype($chartOption) === 'array') {
-            $result .= $this->renderArrayWithCallback($chartOption, $name);
-        }
-
-        if (gettype($chartOption) === 'object') {
-            $result .= $this->renderObjectWithCallback($chartOption, $name);
-        }
-
-        if (in_array(gettype($chartOption), array('string', 'integer', 'boolean'))) {
-            $result .= $this->renderScalarWithCallback($chartOption, $name);
-        }
-
-        return $result;
-    }
-
-    protected function renderScalarWithCallback($scalarOption, $name)
-    {
-        $result = "";
-        if (!empty($scalarOption)) {
-            $result .= $name . ": " . Json::encode($scalarOption, false, array('enableJsonExprFinder' => true)) . ",\n";
-        }
-
-        return $result;
-    }
-
-    protected function renderArrayWithCallback($arrayOption, $name)
-    {
-        $result = "";
-
-        if (!empty($arrayOption)) {
-            $result .= $name . ": " . Json::encode($arrayOption[0], false, array('enableJsonExprFinder' => true)) . ",\n";
-        }
-
-        return $result;
-    }
-
-    protected function renderObjectWithCallback($complexOption, $name)
-    {
-        $result = "";
-
-        if (get_object_vars($complexOption)) {
-            $result .= $name . ": " . Json::encode($complexOption->{$name}, false, array('enableJsonExprFinder' => true)) . ",\n";
-        }
-
-        return $result;
-    }
-
 
     protected function renderStartIIFE()
     {
