@@ -18,7 +18,7 @@ class AmLineChart extends AbstractSerialChart
         parent::__construct();
     }
 
-    public function addGraph($graphArray)
+    public function addGraph(array $graphArray)
     {
         $this->jsonSettings->graphs((object)array_merge($graphArray, array('type' => 'line')));
     }
