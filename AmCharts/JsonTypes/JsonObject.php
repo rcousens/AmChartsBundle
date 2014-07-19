@@ -1,6 +1,6 @@
 <?php
 
-namespace RedEye\AmChartsBundle\AmCharts\JsonTypes;
+namespace RC\AmChartsBundle\AmCharts\JsonTypes;
 
 class JsonObject implements \JsonSerializable
 {

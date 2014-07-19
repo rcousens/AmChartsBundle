@@ -6,7 +6,7 @@
  * Time: 1:18 PM
  */
 
-namespace RedEye\AmChartsBundle\AmCharts;
+namespace RC\AmChartsBundle\AmCharts;
 
 
 class AmPieChart extends AbstractChart

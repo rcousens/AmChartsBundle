@@ -1,6 +1,6 @@
 <?php
 
-namespace RedEye\AmChartsBundle\AmCharts;
+namespace RC\AmChartsBundle\AmCharts;
 
 interface ChartInterface
 {

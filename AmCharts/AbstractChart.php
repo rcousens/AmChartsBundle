@@ -1,9 +1,9 @@
 <?php
 
-namespace RedEye\AmChartsBundle\AmCharts;
+namespace RC\AmChartsBundle\AmCharts;
 
-use RedEye\AmChartsBundle\AmCharts\Settings\JsonSettings;
-use RedEye\AmChartsBundle\AmCharts\Settings\ConfigSettings;
+use RC\AmChartsBundle\AmCharts\Settings\JsonSettings;
+use RC\AmChartsBundle\AmCharts\Settings\ConfigSettings;
 
 abstract class AbstractChart implements ChartInterface, \JsonSerializable
 {

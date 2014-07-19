@@ -1,8 +1,8 @@
 <?php
 
-namespace RedEye\AmChartsBundle\AmCharts\Settings;
+namespace RC\AmChartsBundle\AmCharts\Settings;
 
-use RedEye\AmChartsBundle\AmCharts\JsonTypes\JsonObject;
+use RC\AmChartsBundle\AmCharts\JsonTypes\JsonObject;
 
 class JsonSettings implements \JsonSerializable
 {

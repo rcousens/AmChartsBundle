@@ -6,7 +6,7 @@
  * Time: 1:18 PM
  */
 
-namespace RedEye\AmChartsBundle\AmCharts;
+namespace RC\AmChartsBundle\AmCharts;
 
 
 abstract class AbstractSerialChart extends AbstractChart implements ChartInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace RedEye\AmChartsBundle\DependencyInjection;
+namespace RC\AmChartsBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

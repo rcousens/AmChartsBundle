@@ -16,10 +16,10 @@
     },
     "autoload": {
         "psr-0": {
-            "RossCousens\\AmChartsBundle": ""
+            "RC\\AmChartsBundle": ""
         }
     },
-    "target-dir": "RossCousens/AmChartsBundle",
+    "target-dir": "RC/AmChartsBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"

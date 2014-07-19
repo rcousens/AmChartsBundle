@@ -1,8 +1,8 @@
 parameters:
-  redeye_amcharts.twig_extension.class: RedEye\AmChartsBundle\Twig\AmChartsExtension
+  rc_amcharts.twig_extension.class: RC\AmChartsBundle\Twig\AmChartsExtension
 
 services:
-  redeye_amcharts.twig.amcharts_extension:
-    class: %redeye_amcharts.twig_extension.class%
+  rc_amcharts.twig.amcharts_extension:
+    class: %rc_amcharts.twig_extension.class%
     tags:
         - { name: twig.extension }

@@ -6,7 +6,7 @@
  * Time: 3:22 PM
  */
 
-namespace RedEye\AmChartsBundle\AmCharts\Settings;
+namespace RC\AmChartsBundle\AmCharts\Settings;
 
 
 class ConfigSettings {

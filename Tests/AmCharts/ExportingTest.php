@@ -1,6 +1,6 @@
 <?php
 
-namespace RedEye\AmChartsBundle\Tests\Highcharts;
+namespace RC\AmChartsBundle\Tests\Highcharts;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
 use Zend\Json\Expr;

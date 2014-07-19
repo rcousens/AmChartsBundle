@@ -1,7 +1,7 @@
 <?php
-namespace RedEye\AmChartsBundle\Twig;
+namespace RC\AmChartsBundle\Twig;
 
-use RedEye\AmChartsBundle\AmCharts\ChartInterface;
+use RC\AmChartsBundle\AmCharts\ChartInterface;
 
 class AmChartsExtension extends \Twig_Extension
 {
