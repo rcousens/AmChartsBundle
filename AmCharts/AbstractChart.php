@@ -2,24 +2,22 @@
 
 namespace RedEye\AmChartsBundle\AmCharts;
 
-use RedEye\AmChartsBundle\AmCharts\Option\OptionCollection;
+use RedEye\AmChartsBundle\AmCharts\Settings\JsonSettings;
+use RedEye\AmChartsBundle\AmCharts\Settings\ConfigSettings;
 
-abstract class AbstractChart implements ChartInterface
+abstract class AbstractChart implements ChartInterface, \JsonSerializable
 {
-    public $options;
-    public $config;
+    protected $jsonSettings;
+    protected $configSettings;
+    protected $type = '';
 
     public function __construct()
     {
-        $this->options = new OptionCollection();
-        $this->config = (object) array('container' => 'chart', 'height' => 400, 'width' => 400);
-        $this->setOptions();
-    }
-
-    public function setOptions()
-    {
-        $this->options->addScalarOption('theme', 'none');
-        $this->options->addScalarOption('pathToImages', '/bundles/redeyeamcharts/js/amcharts/images/');
+        $this->jsonSettings = new JsonSettings();
+        $this->configSettings = new ConfigSettings();
+        $this->jsonSettings->dataProvider([]);
+        $this->jsonSettings->theme('none');
+        $this->jsonSettings->pathToImages('http://www.amcharts.com/lib/3/images/');
     }
 
     protected function renderStartIIFE()
@@ -30,5 +28,35 @@ abstract class AbstractChart implements ChartInterface
     protected function renderEndIIFE()
     {
         return "});\n";
+    }
+
+    public function addData(array $data)
+    {
+        $this->jsonSettings->dataProvider((object)$data);
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->jsonSettings;
+    }
+
+    public function setTheme($theme)
+    {
+        $this->jsonSettings->theme($theme);
+    }
+
+    public function render()
+    {
+        $chartJS = $this->renderStartIIFE();
+
+        $chartJS .= "    var " . $this->type . "chart = new AmCharts.makeChart(\"" . $this->configSettings->getContainer() . "\",";
+
+        $chartJS .= json_encode($this, JSON_PRETTY_PRINT);
+
+        $chartJS .= ");\n";
+
+        $chartJS .= $this->renderEndIIFE();
+
+        return $chartJS;
     }
 }

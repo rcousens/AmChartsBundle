@@ -12,9 +12,9 @@ class AmChartsExtension extends \Twig_Extension
         );
     }
 
-    public function chart(ChartInterface $chart, $engine = 'jquery')
+    public function chart(ChartInterface $chart)
     {
-        return $chart->render($engine);
+        return $chart->render();
     }
 
     public function getName()

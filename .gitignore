@@ -4,3 +4,5 @@ composer.phar
 php-cs-fixer.phar
 
 vendor
+
+*.iml

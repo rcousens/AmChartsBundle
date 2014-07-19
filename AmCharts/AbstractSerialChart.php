@@ -15,47 +15,42 @@ abstract class AbstractSerialChart extends AbstractChart implements ChartInterfa
     {
         parent::__construct();
 
-//        $this->type('serial');
-//        $this->categoryField('category');
-//
-//        $arrayOptions = array('graphs');
-//
-//        $complexOptions = array('chartScrollbar');
-//
-//        foreach ($arrayOptions as $option) {
-//            $this->initArrayOption($option);
-//        }
-//
-//        foreach ($complexOptions as $option) {
-//            $this->initComplexOption($option);
-//        }
+        $this->jsonSettings->type('serial');
+        $this->jsonSettings->categoryField('category');
+        $this->jsonSettings->valueAxes([]);
+        $this->jsonSettings->graphs([]);
     }
 
-    public function setOptions()
+    public function setCategoryField($field)
     {
-        parent::setOptions();
-        $this->options->addScalarOption('type', 'serial');
-        $this->options->addScalarOption('categoryField', 'category');
-        $this->options->addArrayOption('graphs');
-        $this->options->addObjectOption('chartScrollbar');
-        $this->options->addArrayOption('dataProvider');
-        $this->options->addArrayOption('valueAxes');
+        $this->jsonSettings->categoryField($field);
     }
+
+    public function addGraph(array $graph)
+    {
+        $this->jsonSettings->graphs((object)$graph);
+    }
+
+    public function addValueAxis(array $valueAxis)
+    {
+        $this->jsonSettings->valueAxes((object)$valueAxis);
+    }
+
 
     public function render()
     {
         $chartJS = $this->renderStartIIFE();
 
         //$chartJS = $this->renderStartChart();
-        $chartJS .= "    var " . $this->options->type . "chart = new AmCharts.makeChart(\"" . $this->config->container . "\",";
+        $chartJS .= "    var " . $this->type . "chart = new AmCharts.makeChart(\"" . $this->configSettings->getContainer() . "\",";
 
-        $chartJS .= $this->options->render();
+        $chartJS .= json_encode($this, JSON_PRETTY_PRINT);
 
         $chartJS .= ");\n";
 
         $chartJS .= $this->renderEndIIFE();
 
-        return trim($chartJS);
+        return $chartJS;
     }
 
 }
