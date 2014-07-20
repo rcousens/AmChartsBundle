@@ -14,7 +14,7 @@ class JsonArray implements \JsonSerializable
     public function addElement($element)
     {
         if (is_array($element)) {
-            $this->elements[] = new JsonArray();
+            $this->elements[] = new JsonArray($element);
         } elseif (is_object($element)) {
             $this->elements[] = new JsonObject($element);
         } else {
@@ -22,6 +22,10 @@ class JsonArray implements \JsonSerializable
         }
     }
 
+    public function setElements(array $elements)
+    {
+        $this->elements = $elements;
+    }
 
     public function jsonSerialize()
     {
