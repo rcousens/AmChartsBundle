@@ -95,7 +95,7 @@ In your template ...
 
 <script src="{{ asset('bundles/rcamcharts/js/amcharts/amcharts.js') }}"></script>
 <script src="{{ asset('bundles/rcamcharts/js/amcharts/pie.js') }}"></script>
-<script src="{{ asset('bundles/rrcamcharts/js/amcharts/themes/none.js') }}"></script>
+<script src="{{ asset('bundles/rcamcharts/js/amcharts/themes/none.js') }}"></script>
 
 <script type="text/javascript">
     {{ amchart(chart) }}
