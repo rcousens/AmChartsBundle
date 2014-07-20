@@ -25,11 +25,11 @@ echo $chart2->render();
 
 $chart3 = new \RC\AmChartsBundle\AmCharts\AmPieChart();
 
-$chart3->setTitleField('category');
+$chart3->setTitleField('number');
 $chart3->setValueField('column-1');
-$chart3->addData(array('category' => '1', 'value' => 10));
-$chart3->addData(array('category' => '2', 'value' => 40));
-$chart3->addData(array('category' => '3', 'value' => 30));
+$chart3->addData(array('number' => '1', 'column-1' => 10));
+$chart3->addData(array('number' => '2', 'column-1' => 40));
+$chart3->addData(array('number' => '3', 'column-1' => 30));
 
 echo $chart3->render();
 
