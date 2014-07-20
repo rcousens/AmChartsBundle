@@ -16,11 +16,17 @@ class AmColumnChart extends AbstractSerialChart
     public function __construct()
     {
         parent::__construct();
+        $this->jsonSettings->rotate(true);
     }
 
     public function addGraph(array $graphArray)
     {
         $this->jsonSettings->graphs((object)array_merge($graphArray, array('type' => 'column')));
+    }
+
+    public function setRotate($rotate)
+    {
+        $this->jsonSettings->rotate($rotate);
     }
 
 }
