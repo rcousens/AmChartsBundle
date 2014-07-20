@@ -74,6 +74,7 @@ In your controller ...
         // Chart
         $pieChart = new \RC\AmChartsBundle\AmCharts\AmPieChart();
         
+        $pieChart->renderTo('piechart');
         $pieChart->setTitleField('number');
         $pieChart->setValueField('column-1');
         $pieChart->addData(array('number' => '1', 'column-1' => 10));
