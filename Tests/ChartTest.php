@@ -25,6 +25,7 @@ echo $chart2->render();
 
 $chart3 = new \RC\AmChartsBundle\AmCharts\AmPieChart();
 
+$chart3->renderTo('piechart');
 $chart3->setTitleField('number');
 $chart3->setValueField('column-1');
 $chart3->addData(array('number' => '1', 'column-1' => 10));
