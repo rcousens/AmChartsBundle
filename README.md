@@ -11,7 +11,7 @@ DRY out your chart code by writing it all in PHP!
 * [License](#license)
 * [How to get started / Installation](#how-to-get-started)
 * Usage
-    * [Make a basic line-chart](#basic-pie-chart)
+    * [Make a basic pie chart](#basic-pie-chart)
 * Cookbook
 
 ## License
@@ -66,7 +66,7 @@ In your controller ...
 
 ``` php
     <?php
-    use RC\AmChartsBundle\AmCharts\AmLineChart;
+    use RC\AmChartsBundle\AmCharts\AmPieChart;
 
     // ...
     public function chartAction()
