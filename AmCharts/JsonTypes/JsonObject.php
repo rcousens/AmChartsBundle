@@ -39,7 +39,7 @@ class JsonObject implements \JsonSerializable
             }
             // allow updating of scalar values
             if (is_scalar($this->getProperty($name)) && is_scalar($value[0])) {
-                $this->propertyContainer->{$name} = $value[0];
+                $this->setProperty($name, $value[0]);
             }
         }
     }
