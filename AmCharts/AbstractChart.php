@@ -44,7 +44,7 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
     {
         $this->jsonSettings->theme($theme);
     }
-
+    
     public function renderTo($container)
     {
         $this->configSettings->setContainer($container);
