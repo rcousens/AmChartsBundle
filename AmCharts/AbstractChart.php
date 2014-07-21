@@ -16,7 +16,7 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
         $this->jsonSettings = new JsonSettings();
         $this->configSettings = new ConfigSettings();
         $this->jsonSettings->theme('none');
-        $this->jsonSettings->pathToImages('/bundles/rcamcharts/js/amcharts/images');
+        $this->jsonSettings->pathToImages('/bundles/rcamcharts/js/amcharts/images/');
         $this->jsonSettings->dataProvider([]);
     }
 
