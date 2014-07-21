@@ -17,7 +17,7 @@ class AmPieChart extends AbstractChart
     {
         parent::__construct();
         $this->jsonSettings->type('pie');
-        $this->jsonSettings->titleField('category');
+        $this->jsonSettings->titleField('title');
         $this->jsonSettings->valueField('value');
     }
 
