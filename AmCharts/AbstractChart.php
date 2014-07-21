@@ -18,7 +18,6 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
         $this->jsonSettings->theme('none');
         $this->jsonSettings->pathToImages('/bundles/rcamcharts/js/amcharts/images');
         $this->jsonSettings->dataProvider([]);
-
     }
 
     public function __get($name)
@@ -28,7 +27,7 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
 
     public function __call($name, $value)
     {
-        return $this->jsonSettings->{$name}($value);
+        return $this->jsonSettings->{$name}($value[0]);
     }
 
     public function addData(array $data)
