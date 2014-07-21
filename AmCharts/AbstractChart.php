@@ -21,14 +21,14 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
 
     }
 
-    protected function renderStartIIFE()
+    public function __get($name)
     {
-        return "$(function () {\n";
+        return $this->jsonSettings->{$name};
     }
 
-    protected function renderEndIIFE()
+    public function __call($name, $value)
     {
-        return "});\n";
+        return $this->jsonSettings->{$name}($value);
     }
 
     public function addData(array $data)
@@ -71,9 +71,14 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
         return $this->configSettings->getWidth();
     }
 
-    public function __get($name)
+    protected function renderStartIIFE()
     {
-        return $this->jsonSettings->{$name};
+        return "$(function () {\n";
+    }
+
+    protected function renderEndIIFE()
+    {
+        return "});\n";
     }
 
     public function render()
