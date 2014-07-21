@@ -15,9 +15,10 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
     {
         $this->jsonSettings = new JsonSettings();
         $this->configSettings = new ConfigSettings();
-        $this->jsonSettings->dataProvider([]);
         $this->jsonSettings->theme('none');
         $this->jsonSettings->pathToImages('/bundles/rcamcharts/js/amcharts/images');
+        $this->jsonSettings->dataProvider([]);
+
     }
 
     protected function renderStartIIFE()
@@ -70,6 +71,10 @@ abstract class AbstractChart implements ChartInterface, \JsonSerializable
         return $this->configSettings->getWidth();
     }
 
+    public function __get($name)
+    {
+        return $this->jsonSettings->{$name};
+    }
 
     public function render()
     {

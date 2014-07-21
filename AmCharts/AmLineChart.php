@@ -22,4 +22,5 @@ class AmLineChart extends AbstractSerialChart
     {
         $this->jsonSettings->graphs((object)array_merge($graphArray, array('type' => 'line')));
     }
+
 }

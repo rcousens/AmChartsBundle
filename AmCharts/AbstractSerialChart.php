@@ -19,6 +19,7 @@ abstract class AbstractSerialChart extends AbstractChart implements ChartInterfa
         $this->jsonSettings->categoryField('category');
         $this->jsonSettings->valueAxes([]);
         $this->jsonSettings->graphs([]);
+        $this->jsonSettings->categoryAxis((object)[]);
     }
 
     public function setCategoryField($field)
@@ -36,6 +37,10 @@ abstract class AbstractSerialChart extends AbstractChart implements ChartInterfa
         $this->jsonSettings->valueAxes((object)$valueAxis);
     }
 
+    public function setCategoryAxis(array $categoryAxis)
+    {
+        $this->jsonSettings->categoryAxis((object)$categoryAxis);
+    }
 
     public function render()
     {
