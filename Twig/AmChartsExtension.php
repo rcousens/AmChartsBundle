@@ -8,7 +8,7 @@ class AmChartsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'amchart' => new \Twig_Function_Method($this, 'renderAmChart', array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('amchart', array($this, 'renderAmChart'), array('is_safe' => array('html'))),
         );
     }
 
