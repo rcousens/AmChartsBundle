@@ -1,8 +1,8 @@
 {
-    "name": "rcousens/amcharts-bundle",
+    "name": "redeyeapps/amcharts-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony2 Bundle that ease the use of AmCharts to display rich graph and charts in your app",
-    "keywords": ["symfony2", "charting", "charts", "amcharts", "chart", "graph", "graphs"],
+    "description": "Symfony2/3/4 Bundle that ease the use of AmCharts to display rich graph and charts in your app",
+    "keywords": ["symfony2", "symfony3", "symfony4", "charting", "charts", "amcharts", "chart", "graph", "graphs"],
     "homepage": "https://github.com/rcousens/AmChartsBundle",
     "license": "MIT",
     "authors": [
@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "symfony/symfony": "2.*"
+        "symfony/symfony": ">=3.0"
     },
     "autoload": {
         "psr-0": {

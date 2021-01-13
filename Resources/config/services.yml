@@ -3,6 +3,6 @@ parameters:
 
 services:
   rc_amcharts.twig.amcharts_extension:
-    class: %rc_amcharts.twig_extension.class%
+    class: '%rc_amcharts.twig_extension.class%'
     tags:
         - { name: twig.extension }
